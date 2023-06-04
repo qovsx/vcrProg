@@ -18,16 +18,24 @@ export default class Scheme1 extends Container {
     public outputStream: CircleComponent
     public cancelStream: CircleComponent
 
+    public htmlElementProcessed: HTMLElement
+    public htmlElementProfit: HTMLElement
     public htmlElementCancel: HTMLElement
     public htmlElementLostProfit: HTMLElement
 
-    private _timeStart = +new Date(Date.UTC(2023, 5, 0, -4))
-    private _time = this._timeStart
+    private _time = 0
     private timeView = new Text(timeFormatter.format(this._time))
 
-    constructor(htmlElementCancel: HTMLElement, htmlElementLostProfit: HTMLElement) {
+    constructor(
+        htmlElementProcessed: HTMLElement,
+        htmlElementProfit: HTMLElement,
+        htmlElementCancel: HTMLElement,
+        htmlElementLostProfit: HTMLElement,
+    ) {
         super()
 
+        this.htmlElementProcessed = htmlElementProcessed
+        this.htmlElementProfit = htmlElementProfit
         this.htmlElementCancel = htmlElementCancel
         this.htmlElementLostProfit = htmlElementLostProfit
 
@@ -39,7 +47,7 @@ export default class Scheme1 extends Container {
         const queue = new CircleComponent({ color: blue })
         queue.x = -100
         queue.y = -50
-        const cancelStream = new CircleComponent({ color: blue })
+        const cancelStream = new CircleComponent({ color: red })
         cancelStream.x = -100
         cancelStream.y = 70
         const arrowQueueToCancel = new ArrowComponent({
@@ -91,7 +99,7 @@ export default class Scheme1 extends Container {
     }
 
     public update(time: number) {
-        this._time = this._timeStart + time
+        this._time = time
         this.timeView.text = timeFormatter.format(this._time)
     }
 }

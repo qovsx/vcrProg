@@ -10,9 +10,13 @@ import InputManager from 'InputManager'
 const canvas1 = document.getElementById('cvs1') as HTMLCanvasElement
 const canvas2 = document.getElementById('cvs2') as HTMLCanvasElement
 
+const output1 = document.getElementById('output_1') as HTMLElement
+const profit1 = document.getElementById('profit_1') as HTMLElement
 const cancel1 = document.getElementById('cancel_1') as HTMLElement
 const lostProfit1 = document.getElementById('lost_profit_1') as HTMLElement
 
+const output2 = document.getElementById('output_2') as HTMLElement
+const profit2 = document.getElementById('profit_2') as HTMLElement
 const cancel2 = document.getElementById('cancel_2') as HTMLElement
 const lostProfit2 = document.getElementById('lost_profit_2') as HTMLElement
 
@@ -21,12 +25,12 @@ const startButton = document.getElementById('start_button') as HTMLButtonElement
 const mainTicker = new Ticker()
 
 const gApp1 = new GraphicsApp(canvas1)
-const scheme1 = new Scheme1(cancel1, lostProfit1)
+const scheme1 = new Scheme1(output1, profit1, cancel1, lostProfit1)
 const scheme1Manager = new Scheme1Manager(scheme1)
 gApp1.stage.addChild(scheme1)
 
 const gApp2 = new GraphicsApp(canvas2)
-const scheme2 = new Scheme1(cancel2, lostProfit2)
+const scheme2 = new Scheme1(output2, profit2, cancel2, lostProfit2)
 const scheme2Manager = new Scheme1Manager(scheme2)
 gApp2.stage.addChild(scheme2)
 

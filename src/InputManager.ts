@@ -14,7 +14,7 @@ export default class InputManager {
             processingTime: this.getValidInputValue(inputProcessingTime),
             inputStream: this.getValidInputValue(inputInputStream),
             maxWaiting: this.getValidInputValue(inputMaxWaiting),
-            workingTime: this.getValidInputValue(inputWorkingTime, 1, 24),
+            workingTime: this.getValidInputValue(inputWorkingTime, 1),
             price: this.getValidInputValue(inputPrice),
         }
     }

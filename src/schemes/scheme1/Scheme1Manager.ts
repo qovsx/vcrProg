@@ -10,6 +10,8 @@ export interface IData {
     price: number
 }
 
+const currencyFormatter = new Intl.NumberFormat('RU-ru')
+
 const rangeFloat = (min: number, max: number) => min + Math.random() * (max - min)
 const rangeInt = (min: number, max: number) => Math.floor(rangeFloat(min, max))
 
@@ -157,8 +159,15 @@ export default class Scheme1Manager {
         this.scheme.outputStream.count = model.outputStream
         this.scheme.processing.fillCoefficent = model.processing
 
+        this.scheme.htmlElementProcessed.innerText = model.outputStream.toString(10)
+        this.scheme.htmlElementProfit.innerText = currencyFormatter.format(
+            model.outputStream * this.price
+        )
+
         this.scheme.htmlElementCancel.innerText = model.cancelStream.toString(10)
-        this.scheme.htmlElementLostProfit.innerText = (model.cancelStream * this.price).toFixed(2)
+        this.scheme.htmlElementLostProfit.innerText = currencyFormatter.format(
+            model.cancelStream * this.price
+        )
 
         this.scheme.update(timeInMinutes * 60 * 1000)
     }
