@@ -6,9 +6,9 @@ import RectComponent from 'schemes/components/RectComponent'
 import timeFormatter from 'schemes/timeFormatter'
 
 const palette = {
-    'red': 0xFF8C69,
-    'green': 0x99FF99,
-    'blue': 0xAFDAFC,
+    'red': 0xf794cc,
+    'green': 0xa2d998,
+    'blue': 0x82aaea,
 }
 
 export default class Scheme1 extends Container {
