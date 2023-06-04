@@ -43,37 +43,37 @@ export default class Scheme1 extends Container {
 
         const inputStream = new CircleComponent({ color: green })
         inputStream.x = -250
-        inputStream.y = -50
+        inputStream.y = 0
         const queue = new CircleComponent({ color: blue })
         queue.x = -100
-        queue.y = -50
+        queue.y = 0
         const cancelStream = new CircleComponent({ color: red })
         cancelStream.x = -100
-        cancelStream.y = 70
+        cancelStream.y = 104
         const arrowQueueToCancel = new ArrowComponent({
             from: { x: queue.x, y: queue.y + 40 },
             to: { x: cancelStream.x, y: cancelStream.y - 40 }
         })
         const arrowInputToQueue = new ArrowComponent({
-            from: { x: inputStream.x + 40, y: -50 },
-            to: { x: queue.x - 40, y: -50 }
+            from: { x: inputStream.x + 40, y: 0 },
+            to: { x: queue.x - 40, y: 0 }
         })
         const processing = new RectComponent({
             color: blue,
             fillColor: red,
         })
         processing.x = 80
-        processing.y = -50
+        processing.y = 0
         const arrowQueueToProcessing = new ArrowComponent({
-            from: { x: queue.x + 40, y: -50 },
-            to: { x: processing.x - 70, y: -50 }
+            from: { x: queue.x + 40, y: 0 },
+            to: { x: processing.x - 70, y: 0 }
         })
         const outputStream = new CircleComponent({ color: red })
-        outputStream.x = 250
-        outputStream.y = -50
+        outputStream.x = 246
+        outputStream.y = 0
         const arrowProcessingToOutput = new ArrowComponent({
-            from: { x: processing.x + 70, y: -50 },
-            to: { x: outputStream.x - 40, y: -50 }
+            from: { x: processing.x + 70, y: 0 },
+            to: { x: outputStream.x - 40, y: 0 }
         })
 
         this.addChild(
@@ -87,6 +87,44 @@ export default class Scheme1 extends Container {
             arrowProcessingToOutput,
             outputStream,
             this.timeView,
+        )
+
+        const inputTitle = new Text('входящий\nпоток', { fontSize: 24, align: 'center' })
+        inputTitle.x = inputStream.x
+        inputTitle.y = -62
+        inputTitle.scale.set(0.8)
+        inputTitle.anchor.set(0.5)
+
+        const cancelTitle = new Text('отказы', { fontSize: 24, align: 'center' })
+        cancelTitle.x = cancelStream.x + 80
+        cancelTitle.y = cancelStream.y
+        cancelTitle.scale.set(0.8)
+        cancelTitle.anchor.set(0.5)
+
+        const queueTitle = new Text('очередь', { fontSize: 24, align: 'center' })
+        queueTitle.x = queue.x
+        queueTitle.y = -62
+        queueTitle.scale.set(0.8)
+        queueTitle.anchor.set(0.5)
+
+        const processingTitle = new Text('обработка', { fontSize: 24, align: 'center' })
+        processingTitle.x = processing.x
+        processingTitle.y = -62
+        processingTitle.scale.set(0.8)
+        processingTitle.anchor.set(0.5)
+
+        const outputTitle = new Text('выходящий\nпоток', { fontSize: 24, align: 'center' })
+        outputTitle.x = outputStream.x
+        outputTitle.y = -62
+        outputTitle.scale.set(0.8)
+        outputTitle.anchor.set(0.5)
+
+        this.addChild(
+            inputTitle,
+            cancelTitle,
+            queueTitle,
+            processingTitle,
+            outputTitle,
         )
 
         this.timeView.position.set(-280, -140)
